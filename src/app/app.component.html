@@ -1,48 +1,116 @@
 <h1>{{ title }}</h1>
 
-<div class="container p-4 mx-3 marco">
-  <form>
-    <div class="form-group mb-3">
-      <label for="codigo">Codigo</label>
-      <input type="text" class="form-control" maxlength="6" />
-    </div>
-    <div class="form-group mb-3">
-      <label for="nombre">Nombre</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Introduzca su nombre"
-      />
-    </div>
-    <div class="form-group mb-3">
-      <label for="edad">Edad</label>
-      <input type="number" class="form-control" value="20" min="15" max="65" />
-    </div>
-    <div class="form-group mb-3">
-      <label for="opcion">Opcion</label>
-      <select class="form-control">
-        <option>Uno</option>
-        <option>Dos</option>
-        <option>Tres</option>
-      </select>
-    </div>
-    <label for="sexo">Sexo</label>
-    <br />
-    <div class="form-group mb-3">
-      <label><input type="radio" class="mx-1" checked="true" />Hombre</label>
-      <label><input type="radio" class="mx-1" />Mujer</label>
-    </div>
-    <div class="form-group mb-3">
-      <label for="comentarios">Comentarios</label>
-      <div class="textarea-btn-holder form-group form-group-replace">
-        <textarea class="form-control text-comment"></textarea>
+<div class="row p-2">
+  <div class="container p-4 mx-3 marco col-5">
+    <form (ngSubmit)="onSubmit()" #miForm="ngForm">
+      <div class="form-group mb-3">
+        <label for="codigo">Codigo</label>
+        <input
+          type="text"
+          class="form-control"
+          maxlength="6"
+          [(ngModel)]="codigo"
+          name="codigo"
+          #cod
+          (change)="mostrarVar()"
+        />
       </div>
-    </div>
-    <div class="form-group">
-      <label
-        ><input type="checkbox" class="mx-1" checked="true" />Activar</label
-      >
-    </div>
-    <button type="submit" class="btn btn-primary mt-4">Submit</button>
-  </form>
+      <div class="form-group mb-3">
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Introduzca su nombre"
+          [(ngModel)]="nombre"
+          name="nombre"
+          (change)="mostrarVar()"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="edad">Edad</label>
+        <input
+          type="number"
+          class="form-control"
+          value="20"
+          min="15"
+          max="65"
+          placeholder="Introduzca su edad (15-65)"
+          [(ngModel)]="edad"
+          name="edad"
+          (change)="mostrarVar()"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="opcion">Opcion</label>
+        <select
+          class="form-control"
+          [(ngModel)]="opcion"
+          name="opcion"
+          (change)="mostrarVar()"
+        >
+          <option>Uno</option>
+          <option>Dos</option>
+          <option>Tres</option>
+        </select>
+      </div>
+      <label for="sexo">Sexo</label>
+      <br />
+      <div class="form-group mb-3">
+        <label
+          ><input
+            type="radio"
+            class="mx-1"
+            [(ngModel)]="sexo"
+            name="sexo"
+            value="Hombre"
+            (change)="mostrarVar()"
+          />Hombre</label
+        >
+        <label
+          ><input
+            type="radio"
+            class="mx-1"
+            [(ngModel)]="sexo"
+            name="sexo"
+            value="Mujer"
+            (change)="mostrarVar()"
+          />Mujer</label
+        >
+      </div>
+      <div class="form-group mb-3">
+        <label for="comentarios">Comentarios</label>
+        <div class="textarea-btn-holder form-group form-group-replace">
+          <textarea
+            class="form-control text-comment"
+            [(ngModel)]="comentarios"
+            name="comentarios"
+            (change)="mostrarVar()"
+          ></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label
+          ><input
+            type="checkbox"
+            class="mx-1"
+            [(ngModel)]="activar"
+            name="activar"
+            (change)="mostrarVar()"
+          />Activar</label
+        >
+      </div>
+      <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+  </div>
+  <div class="container col-5">
+    Cod: {{ cod.value }}<br />
+    Codigo: {{ codigo }}<br />
+    Nombre: {{ nombre }}<br />
+    Edad: {{ edad }}<br />
+    Opcion: {{ opcion }}<br />
+    Sexo: {{ sexo }}<br />
+    Comentarios: {{ comentarios }}<br />
+    Activar: {{ activar }}<br /><br>
+    miForm {{ miForm.value | json }}
+  </div>
 </div>
