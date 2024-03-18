@@ -1,6 +1,6 @@
 <h1>{{ title }}</h1>
 
-<div class="row p-2">
+<!-- <div class="row p-2">
   <div class="container p-4 mx-3 marco col-5">
     <form (ngSubmit)="onSubmit()" #miForm="ngForm">
       <div class="form-group mb-3">
@@ -113,4 +113,51 @@
     Activar: {{ activar }}<br /><br>
     miForm {{ miForm.value | json }}
   </div>
+</div> -->
+
+<!-- Forms: Estado de los objetos -->
+<div class="container-fluid m-2 p-3 marco">
+  <form #miForm="ngForm">
+    <div class="form-group mb-3">
+      <label for="codigo">Codigo</label>
+      <input
+        type="text"
+        class="form-control"
+        name="codigo"
+        ngModel
+        #codigo
+        required
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" name="nombre" ngModel #nombre />
+    </div>
+    <div ngModelGroup="contacto" #contacto="ngModelGroup">
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" ngModel #email />
+      </div>
+      <div class="form-group mb-3">
+        <label for="movil">Movil</label>
+        <input type="number" class="form-control" name="movil" ngModel #movil />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container-fluid fondo p-1 m-1">
+  Codigo clases: <b>{{ codigo.className }}</b
+  ><br />
+  Nombre clases: <b>{{ codigo.className }}</b
+  ><br />
+  Email clases: <b>{{ codigo.className }}</b
+  ><br />
+  Movil clases: <b>{{ codigo.className }}</b
+  ><br />
+  Codigo: <b>{{ codigo.value }}</b><br />
+  Nombre: <b>{{ nombre.value }}</b><br />
+  Email: <b>{{ email.value }}</b><br />
+  Movil: <b>{{ movil.value }}</b><br />
+  Form: <b>{{ miForm.value | json }}</b>
 </div>
