@@ -9,7 +9,8 @@ export class AppComponent {
   // title = '061 formIntro';
   // title = '062 formValores';
   // title = '063 formEstado';
-  title = '064 formValidacion';
+  // title = '064 formValidacion';
+  title = '065 formValidacionPersonalizada';
 
   codigo: string = '';
   nombre: string = '';

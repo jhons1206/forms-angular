@@ -205,11 +205,18 @@
         #nombre="ngModel"
         #_nombre
         required
+        filtrar-caracteres
       />
       <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
         <!-- Hay errores -->
         <div *ngIf="nombre.errors?.['required']" class="alert alert-danger">
           Nombre requerido
+        </div>
+        <div
+          *ngIf="nombre.errors?.['filtrarCaracteres']"
+          class="alert alert-danger"
+        >
+          Solo puede introducir letras de la A a la Z en mayúsculas
         </div>
       </div>
     </div>
